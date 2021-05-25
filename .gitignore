@@ -21,3 +21,8 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+.DS_Store
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/math4kids.iml
+.idea/modules.xml
+.idea/vcs.xml
