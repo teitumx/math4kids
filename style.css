@@ -140,7 +140,6 @@ kbd {
 	background-color: #ddd;
 	padding: 4px 6px;
 	border-radius: 2px;
-	color: ;
 }
 
 address {
@@ -951,14 +950,6 @@ a:focus,
 /* COUNTER */
 /*--------------------*/
 
-#mu-counter {
-	background-image: url("assets/images/counter-bg.jpg");
-	background-size: cover;
-	display: inline;
-	float: left;
-	position: relative;
-	width: 100%;
-}
 
 #mu-counter::before {
 	bottom: 0;
@@ -1621,7 +1612,6 @@ a:focus,
 
 
 #mu-page-header {
-	background-image: url(assets/images/page-header-bg.jpg);
 	background-position: center center;
 	background-size: cover;
 	display: inline;
@@ -1685,7 +1675,6 @@ a:focus,
 }
 
 #mu-skills {
-	background-image: url(assets/images/skill-bg.jpg);
 	background-position: center center;
 	background-size: cover;
 	display: inline;
@@ -2771,7 +2760,6 @@ a:focus,
 
 
 .mu-backdrop {
-	background-image: url(assets/images/error-bg.jpg);
     width: 100%;
     height: 400px;
     position: relative;
@@ -3740,6 +3728,7 @@ a:focus,
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	color: #1da1f2 !important;
+	font-size: 50px;
 }
 
 .example-input:focus {
