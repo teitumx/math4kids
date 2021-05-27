@@ -1,0 +1,19 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/custom.js": "/js/custom.js",
+    "/js/main.js": "/js/main.js",
+    "/css/main.css": "/css/main.css",
+    "/css/app.css": "/css/app.css",
+    "/image/about-us.png": "/image/about-us.png",
+    "/image/call-to-action-bg.jpg": "/image/call-to-action-bg.jpg",
+    "/image/newsletter-bg.jpg": "/image/newsletter-bg.jpg",
+    "/image/slider-img-1.jpg": "/image/slider-img-1.jpg",
+    "/image/slider-img-2.jpg": "/image/slider-img-2.jpg",
+    "/image/slider-img-3.jpg": "/image/slider-img-3.jpg",
+    "/image/team-member.jpg": "/image/team-member.jpg",
+    "/image/testimonial-bg.jpg": "/image/testimonial-bg.jpg",
+    "/image/traveler-1.jpg": "/image/traveler-1.jpg",
+    "/image/traveler-2.jpg": "/image/traveler-2.jpg",
+    "/image/traveler-3.jpg": "/image/traveler-3.jpg",
+    "/image/video-img.jpg": "/image/video-img.jpg"
+}
