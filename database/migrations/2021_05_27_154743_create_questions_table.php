@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('question_id');
             $table->string('text')->nullable(false);
             $table->string('answer', 255)->nullable(false);
-            $table->foreignId('difficulty_type_id')->references('difficulty_type_id')->on('difficultyTypes');
+            $table->foreignId('difficulty_type_id')->references('difficulty_type_id')->on('difficulty_types');
             $table->timestamps();
         });
     }
