@@ -13,7 +13,7 @@ class CreateDifficultyTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('difficultyTypes', function (Blueprint $table) {
+        Schema::create('difficulty_types', function (Blueprint $table) {
             $table->bigIncrements('difficulty_type_id');
             $table->string('title', 255)->nullable(false)->unique();
             $table->integer('score')->nullable(false);
@@ -28,6 +28,6 @@ class CreateDifficultyTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('difficultyTypes');
+        Schema::dropIfExists('difficulty_types');
     }
 }

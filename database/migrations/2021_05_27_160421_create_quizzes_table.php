@@ -18,6 +18,8 @@ class CreateQuizzesTable extends Migration
             $table->string('text')->nullable(false);
             $table->json('answers')->nullable(false);
             $table->tinyInteger('answer')->nullable(false);
+            $table->foreignId('difficulty_type_id')->references('difficulty_type_id')->on('difficulty_types');
+            $table->enum('type', ['summ', 'mult', 'div', 'diff'])->nullable(true);
             $table->timestamps();
         });
     }
