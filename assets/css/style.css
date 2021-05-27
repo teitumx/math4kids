@@ -3729,6 +3729,7 @@ a:focus,
 	-khtml-border-radius: 10px;
 	color: #1da1f2 !important;
 	font-size: 50px;
+	font-weight: bold;
 }
 
 .example-input:focus {
