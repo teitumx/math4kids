@@ -13,10 +13,10 @@ class CreateUserQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userQuestion', function (Blueprint $table) {
+        Schema::create('user_questions', function (Blueprint $table) {
             $table->bigIncrements('user_question_id');
             $table->foreignId('user_id')->references('user_id')->on('users');
-            $table->foreignId('question_id')->references('question_id')->on('question');
+            $table->foreignId('question_id')->references('question_id')->on('questions');
             $table->string('user_answer', 255)->nullable(false);
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateUserQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userQuestion');
+        Schema::dropIfExists('user_questions');
     }
 }

@@ -13,7 +13,7 @@ class CreateUserAchievementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userAchievement', function (Blueprint $table) {
+        Schema::create('user_achievements', function (Blueprint $table) {
             $table->foreignId('user_id')->references('user_id')->on('users');
             $table->foreignId('achievement_id')->references('achievement_id')->on('achievements');
             $table->timestamps();
@@ -27,10 +27,9 @@ class CreateUserAchievementsTable extends Migration
      */
     public function down()
     {
-        Schema::table('userAchievement', function (Blueprint $table) {
+        Schema::table('user_achievements', function (Blueprint $table) {
 //            $table->dropForeign('user_achievements_');
             $table->dropIfExists();
         });
-        Schema::dropIfExists('userAchievement');
     }
 }
