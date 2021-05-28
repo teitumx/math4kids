@@ -8,7 +8,7 @@ import Vue from "vue";
 
 require('./bootstrap');
 
-// window.Vue = require('vue').default;
+window.Vue = require('vue').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,6 +22,7 @@ require('./bootstrap');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('education-component', require('./components/Education.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

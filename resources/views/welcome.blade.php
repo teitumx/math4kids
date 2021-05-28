@@ -10,6 +10,7 @@
 <body class="antialiased">
 <div id="app">
     @section('content')
+        <education-component></education-component>
         <example-component></example-component>
     @endsection
 
