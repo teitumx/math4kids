@@ -26,6 +26,8 @@ Route::get('/education', function () {
     return view('education');
 });
 
+Route::get('/questions', 'App\Http\Controllers\QuestionController@getQuestion')->name('questions');
+
 //Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
