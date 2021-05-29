@@ -26,4 +26,11 @@ use Illuminate\Database\Eloquent\Model;
 class DifficultyType extends Model
 {
     use HasFactory;
+
+    protected $table = 'difficulty_types';
+    protected $primaryKey = 'difficulty_type_id';
+    protected $fillable = [
+        'title',
+        'score'
+    ];
 }
