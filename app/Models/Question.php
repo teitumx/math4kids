@@ -61,6 +61,7 @@ class Question extends Model
 
         }
         $questions = self::select()->whereIn('question_id', $randomQuestionIds)->get()->toArray();
+        shuffle($questions);
         return $questions;
     }
 };
