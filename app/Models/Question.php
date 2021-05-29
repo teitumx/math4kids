@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Array_;
 
 /**
  * App\Models\Question
@@ -38,5 +39,28 @@ class Question extends Model
         'type'
     ];
 
+    public function getRandomQuestions(int $count, int $difficultyTypeId): array
+    {
+        $types = [
+            'summ',
+            'diff',
+            'mult',
+            'div'
+        ];
 
+        $randomQuestionIds = [];
+
+        foreach ($types as $type) {
+            $questionIds = array_keys(
+                self::select(['question_id'])
+                    ->where('type', '=', $type)
+                    ->where('difficulty_type_id', '=', $difficultyTypeId)
+                    ->get()->toArray()
+            );
+            $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
+
+        }
+        $questions = self::select()->whereIn('question_id', $randomQuestionIds)->get()->toArray();
+        return $questions;
+    }
 };
