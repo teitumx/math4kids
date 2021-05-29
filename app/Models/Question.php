@@ -60,8 +60,9 @@ class Question extends Model
             $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
 
         }
-        $questions = self::select()->whereIn('question_id', $randomQuestionIds)->get()->toArray();
-        shuffle($questions);
-        return $questions;
+
+        return self::select(['text', 'answer', 'type'])
+            ->whereIn('question_id', $randomQuestionIds)
+            ->get()->toArray();
     }
 };
