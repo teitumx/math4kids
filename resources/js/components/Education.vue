@@ -6,7 +6,7 @@
                     <h2>{{ counter }} / 40</h2>
                 </div>
                 <div class="col-md-12">
-                    <div class="examples-area">
+                    <div class="examples-area" v-if="counter < 40">
                         <span>{{ randomExample.text }}</span>
                         =
                         <input
@@ -16,19 +16,32 @@
                             v-model="userAnswer"
                         />
                         <div class="">
-                            <div class="">
-                                <button @click="check()" class="btn">Проверить</button
-                                ><button
-                                class="btn"
-                                @click="
-                    getRandomExample();
-                    counter++;
-                  "
-                            >
-                                Cледующий пример
-                            </button>
-                            </div>
+                            <button @click="check()" class="btn">Проверить</button
+                            ><button
+                            class="btn"
+                            @click="
+                  getRandomExample();
+                  counter++;
+                "
+                        >
+                            Cледующий пример
+                        </button>
                         </div>
+                    </div>
+                    <div class="examples-area" v-else>
+                        <h1>Отлично!</h1>
+                        <span
+                        >Правильных ответов:
+              <p class="right-answer">{{ rightCounter }}</p></span
+                        >
+                        <span
+                        >Неправильных ответов:
+              <p class="wrong-answer">{{ wrongCounter }}</p></span
+                        >
+                        <span
+                        >Пропущенно примеров:
+              {{ 40 - (rightCounter + wrongCounter) }}</span
+                        >
                     </div>
                 </div>
             </div>
@@ -46,6 +59,8 @@ export default {
             userAnswer: "",
             wrong: false,
             right: false,
+            rightCounter: 0,
+            wrongCounter: 0,
         };
     },
 
@@ -71,11 +86,11 @@ export default {
 
         check() {
             if (this.userAnswer === this.randomExample.answer) {
-                console.log("правильно");
                 this.right = true;
+                this.rightCounter++;
             } else {
-                console.log("не правильно");
                 this.wrong = true;
+                this.wrongCounter++;
             }
         },
     },
@@ -83,4 +98,11 @@ export default {
 </script>
 
 <style scoped>
+.right-answer {
+    color: green;
+}
+
+.wrong-answer {
+    color: red;
+}
 </style>
