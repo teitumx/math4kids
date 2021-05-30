@@ -1849,8 +1849,88 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Education"
+  data: function data() {
+    return {
+      examples: [],
+      randomExample: [],
+      is_refresh: false,
+      counter: 1,
+      userAnswer: "",
+      wrong: false,
+      right: false
+    };
+  },
+  computed: {
+    numPages: function numPages() {
+      return Math.ceil(this.examples.length / this.perPage);
+    }
+  },
+  mounted: function mounted() {
+    this.update();
+  },
+  methods: {
+    update: function update() {
+      var _this = this;
+
+      this.is_refresh = false;
+      axios.get("questions").then(function (response) {
+        _this.examples = response.data;
+        _this.is_refresh = false;
+
+        _this.getRandomExample();
+      });
+    },
+    getRandomExample: function getRandomExample() {
+      this.randomExample = this.examples[Math.floor(Math.random() * this.examples.length)];
+    },
+    check: function check() {
+      if (this.userAnswer === this.randomExample.answer) {
+        console.log("правильно");
+        this.right = true;
+      } else {
+        console.log("не правильно");
+        this.wrong = true;
+      }
+    },
+    next: function next(change) {
+      this.page = Math.max(1, Math.min(this.numPages, this.page + change));
+    }
+  }
 });
 
 /***/ }),
@@ -1920,7 +2000,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_0__.default.component('education-component', __webpack_require__(/*! ./components/Education.vue */ "./resources/js/components/Education.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0__.default.component('education', __webpack_require__(/*! ./components/Education.vue */ "./resources/js/components/Education.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34539,12 +34619,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./resources/sass/main.scss ***!
   \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve 'image/call-to-action-bg.jpg' in '/Users/macbook/Desktop/docker/math/resources/sass/main'\n    at finishWithoutResolve (/Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:293:18)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:362:15\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/macbook/Desktop/docker/math/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:14:1)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/macbook/Desktop/docker/math/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:25:1)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:87:43\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/macbook/Desktop/docker/math/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:13:1)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/macbook/Desktop/docker/math/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:56:1)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/ConditionalPlugin.js:53:42\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/Resolver.js:410:5\n    at eval (eval at create (/Users/macbook/Desktop/docker/math/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:14:1)\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/forEachBail.js:16:12\n    at /Users/macbook/Desktop/docker/math/node_modules/enhanced-resolve/lib/ModulesInHierachicDirectoriesPlugin.js:72:16\n    at processResult (/Users/macbook/Desktop/docker/math/node_modules/webpack/lib/NormalModule.js:703:19)\n    at /Users/macbook/Desktop/docker/math/node_modules/webpack/lib/NormalModule.js:809:5\n    at /Users/macbook/Desktop/docker/math/node_modules/loader-runner/lib/LoaderRunner.js:399:11\n    at /Users/macbook/Desktop/docker/math/node_modules/loader-runner/lib/LoaderRunner.js:251:18\n    at context.callback (/Users/macbook/Desktop/docker/math/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/Users/macbook/Desktop/docker/math/node_modules/css-loader/dist/index.js:155:5)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)");
 
 /***/ }),
 
@@ -37533,7 +37610,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("123")])
+  return _c("main", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "counter" }, [
+          _c("h2", [_vm._v(_vm._s(_vm.counter) + " / 40")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "examples-area" }, [
+            _c("span", [_vm._v(_vm._s(_vm.randomExample.text))]),
+            _vm._v("\n          =\n          "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userAnswer,
+                  expression: "userAnswer"
+                }
+              ],
+              staticClass: "example-input",
+              class: {
+                "border-success": _vm.right,
+                "border-danger": _vm.wrong
+              },
+              attrs: { type: "text" },
+              domProps: { value: _vm.userAnswer },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userAnswer = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c("div", {}, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    on: {
+                      click: function($event) {
+                        return _vm.check()
+                      }
+                    }
+                  },
+                  [_vm._v("Проверить")]
+                ),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn",
+                    on: {
+                      click: function($event) {
+                        _vm.getRandomExample()
+                        _vm.counter++
+                      }
+                    }
+                  },
+                  [_vm._v("\n                Cледующий пример\n              ")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49820,7 +49967,6 @@ Vue.compile = compileToFunctions;
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/main": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -49869,9 +50015,9 @@ Vue.compile = compileToFunctions;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app"], () => (__webpack_require__("./resources/sass/main.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/main.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -128,7 +128,7 @@
 /* Arrows */
 .slick-prev,
 .slick-next
-{   
+{
     color: #959595;
     font-size: 0;
     line-height: 0;
@@ -1614,7 +1614,7 @@ a:focus,
 /*--------------------*/
 
 #mu-newsletter {
-	background-image: url(/images/newsletter-bg.jpg?31d6cfe0d16ae931b73c59d7e0c089c0);
+	background-image: url(image/newsletter-bg.jpg?31d6cfe0d16ae931b73c59d7e0c089c0);
 	background-position: center center;
 	background-size: cover;
 	display: inline;

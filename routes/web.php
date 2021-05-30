@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/education', function () {
+    return view('education');
+});
+
 Route::get('/index', function () {
     return view('index');
 });
@@ -26,6 +31,6 @@ Route::get('/education', function () {
     return view('education');
 });
 
-Auth::routes();
+Route::get('/questions', [QuestionsController::class, 'getQuestions'])->name('questions');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();

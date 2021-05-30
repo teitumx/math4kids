@@ -592,7 +592,7 @@ a:focus,
 /*--------------------*/
 
 #mu-call-to-action {
-	background-image: url('../images/call-to-action-bg.jpg');
+	background-image: url('image/call-to-action-bg.jpg');
 	float: left;
 	position: relative;
 	width: 100%;
@@ -1313,7 +1313,7 @@ a:focus,
 /*--------------------*/
 
 #mu-newsletter {
-	background-image: url('../images/newsletter-bg.jpg');
+	background-image: url('image/newsletter-bg.jpg');
 	background-position: center center;
 	background-size: cover;
 	display: inline;
