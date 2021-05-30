@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PhpParser\Node\Expr\Array_;
+use Illuminate\Support\Facades\DB;
 
 /**
  * App\Models\Question
@@ -39,30 +40,43 @@ class Question extends Model
         'type'
     ];
 
-    public function getRandomQuestions(int $count, int $difficultyTypeId): array
+    public function getRandomQuestions(int $count, int $difficultyTypeId, string $type): array
     {
-        $types = [
-            'summ',
-            'diff',
-            'mult',
-            'div'
-        ];
+        // $types = [
+        //     'summ',
+        //     'diff',
+        //     'mult',
+        //     'div'
+        // ];
+        $questionArray = DB::table('questions')
+        ->select('question_id', 'text')
+        ->where('type', '=', $type)
+        ->where('difficulty_type_id', '=', $difficultyTypeId)
+        ->inRandomOrder()
+        ->take($count)
+        ->get()->toArray();
 
-        $randomQuestionIds = [];
+        var_dump($questionArray);
+        return $questionArray;
 
-        foreach ($types as $type) {
-            $questionIds = array_keys(
-                self::select(['question_id'])
-                    ->where('type', '=', $type)
-                    ->where('difficulty_type_id', '=', $difficultyTypeId)
-                    ->get()->toArray()
-            );
-            $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
+        // $types = config('constants.types');
 
-        }
+        // $randomQuestionIds = [];
 
-        return self::select(['text', 'answer', 'type'])
-            ->whereIn('question_id', $randomQuestionIds)
-            ->get()->toArray();
+        // foreach ($types as $type) {
+        //     $questionIds = array_keys(
+        //         self::select(['question_id'])
+        //             ->where('type', '=', $type)
+        //             ->where('difficulty_type_id', '=', $difficultyTypeId)
+        //             ->get()->toArray()
+        //     );
+        //     $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
+
+        // }
+        
+
+        // return self::select(['text', 'answer', 'type'])
+        //     ->whereIn('question_id', $randomQuestionIds)
+        //     ->get()->toArray();
     }
 };

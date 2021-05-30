@@ -9,6 +9,6 @@ class QuestionsController extends Controller
 {
     public function getQuestions(Question $question): array
     {
-        return $question->getRandomQuestions(40, 1);
+        return $question->getRandomQuestions(40, 1, 'summ');
     }
 }
