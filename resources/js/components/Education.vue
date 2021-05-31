@@ -3,12 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="counter">
-<!--            Счётчик попыток-->
+          <!--            Счётчик попыток-->
           <h2>{{ counter }} / 40</h2>
         </div>
         <div class="col-md-12">
-
-<!--            Если счётчик меньше 40 показать примеры-->
+          <!--            Если счётчик меньше 40 показать примеры-->
           <div class="examples-area" v-if="counter < 40">
             <span>{{ randomExample.text }}</span>
             =
@@ -32,7 +31,7 @@
             </div>
           </div>
 
-<!--            Когда решены все 40 примеров-->
+          <!--            Когда решены все 40 примеров-->
           <div class="examples-area" v-else>
             <h1>Отлично!</h1>
             <p class="right-answer"></p>
@@ -49,7 +48,7 @@
               <span>{{ 40 - (rightCounter + wrongCounter) }}</span>
             </p>
 
-<!--              Показать фейерверк и ачивку если решены все 40 примеров-->
+            <!--              Показать фейерверк и ачивку если решены все 40 примеров-->
             <div v-if="rightCounter > 1">
               <h1>Круто! 40 правильных примеров! Получай приз!</h1>
               <img src="image/achive/40_right.png" />
@@ -88,7 +87,7 @@ export default {
     this.update(); //загрузка примеров из базы данных при открытии страницы
   },
   methods: {
-      // загрузка примеров из базы данных при открытии страницы
+    // загрузка примеров из базы данных при открытии страницы
     update: function () {
       axios.get("questions").then((response) => {
         this.examples = response.data;
@@ -106,7 +105,7 @@ export default {
       this.wrong = false;
     },
 
-      //проверить ответ пользователя
+    //проверить ответ пользователя
     check() {
       if (this.userAnswer === this.randomExample.answer) {
         this.right = true;

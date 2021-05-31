@@ -50,46 +50,46 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/main/counter.js":
-/*!**************************************!*\
-  !*** ./resources/js/main/counter.js ***!
-  \**************************************/
-/***/ (() => {
+// /***/ "./resources/js/main/counter.js":
+// /*!**************************************!*\
+  // !*** ./resources/js/main/counter.js ***!
+//   \**************************************/
+// /***/ (() => {
 
-var a = 0;
-$(window).scroll(function () {
-  var oTop = $('.mu-single-counter').offset().top - window.innerHeight;
+// var a = 0;
+// $(window).scroll(function () {
+//   var oTop = $('.mu-single-counter').offset().top - window.innerHeight;
 
-  if (a == 0 && $(window).scrollTop() > oTop) {
-    $('.counter-value').each(function () {
-      var $this = $(this),
-          countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-        countNum: countTo
-      }, {
-        duration: 2000,
-        easing: 'swing',
-        step: function step() {
-          $this.text(Math.floor(this.countNum));
-        },
-        complete: function complete() {
-          $this.text(this.countNum); //alert('finished');
-        }
-      });
-    });
-    a = 1;
-  }
-});
+//   if (a == 0 && $(window).scrollTop() > oTop) {
+//     $('.counter-value').each(function () {
+//       var $this = $(this),
+//           countTo = $this.attr('data-count');
+//       $({
+//         countNum: $this.text()
+//       }).animate({
+//         countNum: countTo
+//       }, {
+//         duration: 2000,
+//         easing: 'swing',
+//         step: function step() {
+//           $this.text(Math.floor(this.countNum));
+//         },
+//         complete: function complete() {
+//           $this.text(this.countNum); //alert('finished');
+//         }
+//       });
+//     });
+//     a = 1;
+//   }
+// });
 
-/***/ })
+// /***/ })
 
 /******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -103,14 +103,14 @@ $(window).scroll(function () {
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -123,7 +123,7 @@ $(window).scroll(function () {
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -135,12 +135,12 @@ $(window).scroll(function () {
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -151,7 +151,7 @@ $(window).scroll(function () {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -160,11 +160,7 @@ var __webpack_exports__ = {};
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
   \******************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _main_counter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main/counter */ "./resources/js/main/counter.js");
-/* harmony import */ var _main_counter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_main_counter__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _main_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main/app */ "./resources/js/main/app.js");
-/* harmony import */ var _main_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_main_app__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 })();

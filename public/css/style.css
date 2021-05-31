@@ -552,7 +552,6 @@ a:focus,
 /*--------------------*/
 
 #mu-call-to-action {
-    background-image: url(/image/call-to-action-bg.jpg);
     float: left;
     position: relative;
     width: 100%;
