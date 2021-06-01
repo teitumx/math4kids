@@ -56,7 +56,6 @@ class Question extends Model
         ->take($count)
         ->get()->toArray();
 
-        var_dump($questionArray);
         return $questionArray;
 
         // $types = config('constants.types');
@@ -73,7 +72,7 @@ class Question extends Model
         //     $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
 
         // }
-        
+
 
         // return self::select(['text', 'answer', 'type'])
         //     ->whereIn('question_id', $randomQuestionIds)
