@@ -1922,6 +1922,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1974,6 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
       this.userAnswer = "";
       this.right = false;
       this.wrong = false;
+      this.focusInput('answerInput');
     },
     //проверить ответ пользователя
     check: function check() {
@@ -1989,6 +1991,10 @@ __webpack_require__.r(__webpack_exports__);
     forcesUpdate: function forcesUpdate() {
       Object.assign(this.$data, this.$options.data.call(this));
       this.update();
+    },
+    focusInput: function focusInput(inputRef) {
+      // $refs - это объект, который содержит DOM ссылки на инпуты
+      this.$refs[inputRef].focus();
     }
   },
   computed: {}
@@ -38158,6 +38164,7 @@ var render = function() {
                         expression: "userAnswer"
                       }
                     ],
+                    ref: "answerInput",
                     staticClass: "example-input",
                     class: {
                       "border-success": _vm.right,

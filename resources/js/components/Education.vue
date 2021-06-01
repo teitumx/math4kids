@@ -19,6 +19,7 @@
                 :class="{ 'border-success': right, 'border-danger': wrong }"
                 v-model="userAnswer"
                 v-on:keyup.enter="check()"
+                ref="answerInput"
               />
               <div class="">
                 <button @click="check()" class="btn">Проверить</button
@@ -120,6 +121,8 @@ export default {
       this.userAnswer = "";
       this.right = false;
       this.wrong = false;
+
+      this.focusInput('answerInput');
     },
 
     //проверить ответ пользователя
@@ -137,6 +140,11 @@ export default {
     forcesUpdate() {
       Object.assign(this.$data, this.$options.data.call(this));
       this.update();
+    },
+
+    focusInput: function ( inputRef ) {
+      // $refs - это объект, который содержит DOM ссылки на инпуты
+      this.$refs[inputRef].focus();
     },
   },
   computed: {},
