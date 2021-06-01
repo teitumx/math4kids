@@ -18,7 +18,7 @@
                 class="example-input"
                 :class="{ 'border-success': right, 'border-danger': wrong }"
                 v-model="userAnswer"
-                v-on:keyup.enter="check()"
+                v-on:keyup.enter="getRandomExample()"
                 ref="answerInput"
               />
               <div class="">
