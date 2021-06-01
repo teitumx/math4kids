@@ -49,7 +49,7 @@ class Question extends Model
         //     'div'
         // ];
         $questionArray = DB::table('questions')
-        ->select('question_id', 'text')
+        ->select('question_id', 'text', 'answer')
         ->where('type', '=', $type)
         ->where('difficulty_type_id', '=', $difficultyTypeId)
         ->inRandomOrder()
