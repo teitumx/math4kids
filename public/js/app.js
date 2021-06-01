@@ -1915,6 +1915,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -38145,6 +38146,15 @@ var render = function() {
                   attrs: { type: "text" },
                   domProps: { value: _vm.userAnswer },
                   on: {
+                    keyup: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.check()
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return

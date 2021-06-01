@@ -16,6 +16,7 @@
               class="example-input"
               :class="{ 'border-success': right, 'border-danger': wrong }"
               v-model="userAnswer"
+               v-on:keyup.enter="check()"
             />
             <div class="">
               <button @click="check()" class="btn">Проверить</button
