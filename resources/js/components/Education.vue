@@ -8,6 +8,7 @@
         </div>
         <div class="col-md-12">
           <!--            Если счётчик меньше 40 показать примеры-->
+
           <div class="examples-area">
             <div v-if="examplesView === true">
               <span>{{ randomExample.text }}</span>
@@ -17,6 +18,7 @@
                 class="example-input"
                 :class="{ 'border-success': right, 'border-danger': wrong }"
                 v-model="userAnswer"
+                v-on:keyup.enter="check()"
               />
               <div class="">
                 <button @click="check()" class="btn">Проверить</button
