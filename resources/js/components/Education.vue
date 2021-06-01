@@ -97,7 +97,9 @@ export default {
     this.update(); //загрузка примеров из базы данных при открытии страницы
   },
 
-  mounted() {},
+  mounted() {
+    this.focusInput('answerInput');
+  },
 
   methods: {
     // загрузка примеров из базы данных при открытии страницы

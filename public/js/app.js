@@ -1950,7 +1950,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.update(); //загрузка примеров из базы данных при открытии страницы
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.focusInput('answerInput');
+  },
   methods: {
     // загрузка примеров из базы данных при открытии страницы
     update: function update() {
