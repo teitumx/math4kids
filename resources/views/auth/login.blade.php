@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Document</title>
 </head>
@@ -14,10 +15,11 @@
         @csrf
         <input type="text" name="login" placeholder="login">
         <input type="password" name="password" placeholder="password">
-        <button type="submit" class="btn btn-primary">Отправить</button>
+        <input type="submit" class="btn btn-primary" value="Отправить">
     </form>
 </div>
 </body>
+<script src="{{ asset('js/app.js') }}"></script>
 <script>
     const form = document.querySelector('form')
     $.ajaxSetup({
@@ -27,14 +29,13 @@
     });
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        var form_data = $(event.target).serialize(); // Собираем все данные из формы
+        var form_data = $(event.target).serialize();
         $.ajax({
-            type: "POST", // Метод отправки
-            url: "/auth/register", // Путь до php файла отправителя
+            type: "POST",
+            url: "/auth/login",
             data: form_data,
             success: function () {
-                // Код в этом блоке выполняется при успешной отправке сообщения
-                alert("Вы успешно зарегистрировались!");
+                alert("Вы успешно авторизовались!");
             }
         });
     })

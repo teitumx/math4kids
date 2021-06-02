@@ -22,21 +22,28 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function login()
+    public function login(Request $request)
     {
-
+        $result = false;
+        if(\Auth::attempt([
+            'login' => $request->post('login'),
+            'password' => $request->post('password'),
+        ])) {
+            $request->session()->regenerate();
+            $result = true;
+        }
+        return $result;
     }
 
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request, User $user)
     {
         $result = false;
         try {
-            $user = new User();
             $user->fill([
                 'first_name' => $request->post('first_name'),
                 'last_name' => $request->post('last_name'),
                 'login' => $request->post('login'),
-                'password' => $request->post('password'),
+                'password' => \Hash::make($request->post('password')),
                 'birthday' => $request->post('birthday')
             ]);
 
