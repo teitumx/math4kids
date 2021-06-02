@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\QuestionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,18 +21,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/education', function () {
-    return view('education');
-});
+
 
 Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/education', function () {
-    return view('education');
+Route::namespace('Question')->group(function() {
+    Route::get('/education', [QuestionController::class, 'index']);
+
+    Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
 });
 
-Route::get('/questions', [QuestionsController::class, 'getQuestions'])->name('questions');
+Route::namespace('Auth')->group(function() {
+    Route::get('/auth/login', [AuthController::class, 'viewLogin']);
+    Route::get('/auth/register', [AuthController::class, 'viewRegister']);
+    Route::post('/auth/login', [AuthController::class, 'login']);
+    Route::post('/auth/register', [AuthController::class, 'register']);
+});
+
 
 //Auth::routes();
