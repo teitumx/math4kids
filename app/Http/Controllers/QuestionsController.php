@@ -1,19 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Question;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class QuestionsController extends Controller
 {
-
-    public function index()
-    {
-        return view('education');
-    }
-
     public function getQuestions(Question $question): array
     {
         return $question->getRandomQuestions(40, 1, 'summ');

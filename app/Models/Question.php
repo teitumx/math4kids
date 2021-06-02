@@ -42,12 +42,40 @@ class Question extends Model
 
     public function getRandomQuestions(int $count, int $difficultyTypeId, string $type): array
     {
-        return DB::table('questions')
-            ->select('question_id', 'text', 'answer')
-            ->where('type', '=', $type)
-            ->where('difficulty_type_id', '=', $difficultyTypeId)
-            ->inRandomOrder()
-            ->take($count)
-            ->get()->toArray();
+        // $types = [
+        //     'summ',
+        //     'diff',
+        //     'mult',
+        //     'div'
+        // ];
+        $questionArray = DB::table('questions')
+        ->select('question_id', 'text', 'answer')
+        ->where('type', '=', $type)
+        ->where('difficulty_type_id', '=', $difficultyTypeId)
+        ->inRandomOrder()
+        ->take($count)
+        ->get()->toArray();
+
+        return $questionArray;
+
+        // $types = config('constants.types');
+
+        // $randomQuestionIds = [];
+
+        // foreach ($types as $type) {
+        //     $questionIds = array_keys(
+        //         self::select(['question_id'])
+        //             ->where('type', '=', $type)
+        //             ->where('difficulty_type_id', '=', $difficultyTypeId)
+        //             ->get()->toArray()
+        //     );
+        //     $randomQuestionIds = array_merge ( $randomQuestionIds, array_rand ( (array)$questionIds, $count / 4 ) );
+
+        // }
+
+
+        // return self::select(['text', 'answer', 'type'])
+        //     ->whereIn('question_id', $randomQuestionIds)
+        //     ->get()->toArray();
     }
 };
