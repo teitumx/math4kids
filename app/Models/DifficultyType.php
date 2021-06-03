@@ -31,6 +31,6 @@ class DifficultyType extends Model
     protected $primaryKey = 'difficulty_type_id';
     protected $fillable = [
         'title',
-        'score'
+        'count_examples'
     ];
 }
