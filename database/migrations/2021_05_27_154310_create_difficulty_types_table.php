@@ -13,12 +13,14 @@ class CreateDifficultyTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('difficulty_types', function (Blueprint $table) {
-            $table->bigIncrements('difficulty_type_id');
-            $table->string('title', 255)->nullable(false)->unique();
-            $table->integer('score')->nullable(false);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('difficulty_types')) {
+            Schema::create('difficulty_types', function (Blueprint $table) {
+                $table->bigIncrements('difficulty_type_id');
+                $table->string('title', 255)->nullable(false)->unique();
+                $table->integer('count_examples')->nullable(false);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

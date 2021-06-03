@@ -16,12 +16,12 @@ class DifficultyTypesSeeder extends Seeder
     {
         DifficultyType::create([
             'title'=> 'easy',
-            'score' => 10
+            'count_examples' => 20
         ]);
 
         DifficultyType::create([
            'title'=> 'hard',
-           'score' => 20
+           'count_examples' => 40
         ]);
     }
 }

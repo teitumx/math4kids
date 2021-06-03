@@ -50,4 +50,11 @@ class Question extends Model
             ->take($count)
             ->get()->toArray();
     }
+
+    public function getCountExamples($type) {
+        return DB::table('difficulty_types')
+            ->select('count_examples')
+            ->where('title', '=', $type)
+            ->get();
+    }
 };
