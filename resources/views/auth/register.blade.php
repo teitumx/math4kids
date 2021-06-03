@@ -28,7 +28,7 @@
 
                     <form class="form-horizontal" action="/auth/register" method="post">
                         <input type="hidden" name="csrfToken" value="{{ csrf_token() }}">
-                        <span class="heading">РЕГИСТРАЦИЯ</span></span>
+                        <span class="heading">РЕГИСТРАЦИЯ</span>
                         <div class="form-group">
                             <input type="text" class="form-control" name="first_name" placeholder="Имя">
                             <i class="fa fa-user"></i>
@@ -50,9 +50,9 @@
                             <i class="fa fa-lock"></i>
                         </div>
                         <div class="form-group">
-                            <div class="btn-register btn-primary btn-sm float-left">
-                                <span>Загрузить аватар: </span>
-                                <br>
+                            <span>Загрузить аватар: </span>
+                            <br>
+                            <div class="btn-register">
                                 <input type="file" name="avatar" placeholder="avatar">
                             </div>
                         </div>
@@ -63,11 +63,10 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-default" value="Отправить">ЗАРЕГЕСТРИРОВАТЬСЯ</button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
-    </div>
     </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
