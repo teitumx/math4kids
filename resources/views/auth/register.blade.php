@@ -61,7 +61,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default" value="Отправить">ЗАРЕГЕСТРИРОВАТЬСЯ</button>
+                            <button type="submit" class="btn btn-default" value="Отправить">ЗАРЕГИСТРИРОВАТЬСЯ</button>
                         </div>
                     </form>
                 </div>
