@@ -1,16 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Document</title>
-</head>
+@extends('layout.main')
+
+@section('slider')
+@endsection
+
+
+@section('content')
+
 <body>
-<div class="d-flex w-100 justify-content-center align-items-center" style="height: 100vh;">
+    <!-- <div class="d-flex w-100 justify-content-center align-items-center" style="height: 100vh;">
     <form action="/auth/register" method="post" class="d-flex flex-column">
         <input type="hidden" name="csrfToken" value="{{ csrf_token() }}">
         <input type="text" name="first_name" placeholder="first_name">
@@ -22,8 +19,56 @@
         <input type="date" name="birthday" placeholder="birthday">
         <input type="submit" class="btn btn-primary" value="Отправить">
     </form>
-</div>
+</div> -->
+    <!-- РЕГИСТРАЦИЯ -->
+    <div class="container">
+        <div class="row">
+            <div class="form-area">
+                <div class="col-md-offset-3 col-md-6 w-50 mx-auto">
 
+                    <form class="form-horizontal" action="/auth/register" method="post">
+                        <input type="hidden" name="csrfToken" value="{{ csrf_token() }}">
+                        <span class="heading">РЕГИСТРАЦИЯ</span></span>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="first_name" placeholder="Имя">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="last_name" placeholder="Фамилия">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="login" placeholder="Логин">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="form-group help">
+                            <input type="password" class="form-control" name="password" placeholder="Пароль">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <div class="form-group help">
+                            <input type="password" class="form-control" name="password" placeholder="Повторите пароль">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <div class="form-group">
+                            <div class="btn-register btn-primary btn-sm float-left">
+                                <span>Загрузить аватар: </span>
+                                <br>
+                                <input type="file" name="avatar" placeholder="avatar">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Дата Рождения" name="birthday" onfocus="(this.type='date')">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default" value="Отправить">ЗАРЕГЕСТРИРОВАТЬСЯ</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
@@ -40,11 +85,12 @@
             type: "POST", // Метод отправки
             url: "/auth/register", // Путь до php файла отправителя
             data: form_data,
-            success: function () {
+            success: function() {
                 // Код в этом блоке выполняется при успешной отправке сообщения
                 alert("Вы успешно зарегистрировались!");
             }
         });
     })
 </script>
-</html>
+
+@endsection

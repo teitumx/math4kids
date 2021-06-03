@@ -1,23 +1,47 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Document</title>
-</head>
-<body>
-<div class="d-flex w-100 justify-content-center align-items-center" style="height: 100vh;">
-    <form action="/auth/login" method="post" class="d-flex flex-column">
-        @csrf
-        <input type="text" name="login" placeholder="login">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" class="btn btn-primary" value="Отправить">
-    </form>
+@extends('layout.main')
+
+@section('slider')
+@endsection
+
+
+@section('content')
+
+<div class="container">
+    <div class="row">
+
+        <div class="form-area">
+
+
+            <div class="col-md-offset-3 col-md-6 w-50 mx-auto">
+
+                <form class="form-horizontal" action="/auth/login" method="post">
+                    @csrf
+                    <span class="heading">АВТОРИЗАЦИЯ</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Логин">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Пароль">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <div class="main-checkbox">
+                            <input type="checkbox" value="none" id="checkbox1" name="check" />
+                            <label for="checkbox1"></label>
+                        </div>
+                        <span class="text">Запомнить</span>
+                        <button type="submit" class="btn btn-default" value="Вход">ВХОД</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
@@ -34,10 +58,10 @@
             type: "POST",
             url: "/auth/login",
             data: form_data,
-            success: function () {
+            success: function() {
                 alert("Вы успешно авторизовались!");
             }
         });
     })
 </script>
-</html>
+@endsection
