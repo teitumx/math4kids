@@ -60,9 +60,9 @@
                     <ul class="navbar-nav mr-auto mu-navbar-nav">
                         <li class="nav-item active">
                             {{-- TODO--}}
-                            <a href="#">Главная</a>
+                            <a href="/index">Главная</a>
                         </li>
-                        <li class="nav-item"><a href="#">О нас</a></li>
+                        <li class="nav-item"><a href="/index">О нас</a></li>
                         <li class="nav-item"><a href="/education">Примеры</a></li>
                         <li class="nav-item"><a href="#">Контакты</a></li>
                         <li class="nav-item dropdown show">

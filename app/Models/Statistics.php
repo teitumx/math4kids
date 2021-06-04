@@ -17,6 +17,8 @@ class Statistics extends Model
         'div' => 4
     ];
 
+    public $countTop = 3;
+
 
 
     public function getUserStatistics($userId, $type) {
@@ -40,11 +42,11 @@ class Statistics extends Model
 
     public function getRatingUsersTop($count = 3) {
 
-        return DB::table('users_statistics')
+        $rating = DB::table('users_statistics')->select('user_id', 'total_time', 'points')
             ->orderBy('points', 'desc')
             ->take($count)
-            ->get()->toArray();
-
+            ->get();
+        return $rating;
     }
 
     public function computeRaitingPoints($dataStat, $type) :object {
