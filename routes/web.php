@@ -23,16 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
 
-
-//Route::get('/index', function () {
-//    return view('index');
-//});
-
-//Route::namespace('Index')->group(function() {
-    Route::get('/index', [HomeController::class, 'index']);
+//    Route::get('/index', [HomeController::class, 'index']);
     Route::get('/index/rating', [RatingController::class, 'getRatingUsersTop'])->name('rating');
-//});
+
 
 Route::namespace('Question')->group(function() {
     Route::get('/education', [QuestionController::class, 'index']);
