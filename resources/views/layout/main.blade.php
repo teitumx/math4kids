@@ -65,7 +65,17 @@
                         <li class="nav-item"><a href="#">О нас</a></li>
                         <li class="nav-item"><a href="/education">Примеры</a></li>
                         <li class="nav-item"><a href="#">Контакты</a></li>
-                        <li class="nav-item"><a href="#">Логин</a></li>
+                        <li class="nav-item dropdown show">
+                            <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Логин
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="/auth/login">Войти</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/auth/register">Регистрация</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
