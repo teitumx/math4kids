@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Models\Statistics;
 
-class Statistics extends Controller
+class RatingController extends Controller
 {
     public function getUserStatistics(Request $request) {
 
-        Statistics::getRatingUsersTop($request['count']);
 
     }
 
-    public function getRateUsersTop() {
+    public function getRatingUsersTop(Statistics $statistics) {
+
+        return $statistics->getRatingUsersTop($statistics->countTop);
 
     }
 }
