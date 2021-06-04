@@ -5,6 +5,8 @@ use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\QuestionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Statistics\RatingController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +25,17 @@ Route::get('/', function () {
 
 
 
-Route::get('/index', function () {
-    return view('index');
-});
+//Route::get('/index', function () {
+//    return view('index');
+//});
+
+//Route::namespace('Index')->group(function() {
+    Route::get('/index', [HomeController::class, 'index']);
+    Route::get('/index/rating', [RatingController::class, 'getRatingUsersTop'])->name('rating');
+//});
 
 Route::namespace('Question')->group(function() {
     Route::get('/education', [QuestionController::class, 'index']);
-
     Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
 });
 
