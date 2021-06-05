@@ -6,7 +6,7 @@ use App\Http\Controllers\QuestionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Statistics\RatingController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +23,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function () {
-    return view('index');
-});
+//Route::get('/index', function () {
+//    return view('index');
+//});
 
-//    Route::get('/index', [HomeController::class, 'index']);
+    Route::get('/index', [IndexController::class, 'index']);
     Route::get('/index/rating', [RatingController::class, 'getRatingUsersTop'])->name('rating');
 
 

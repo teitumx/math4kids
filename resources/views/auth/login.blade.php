@@ -34,7 +34,7 @@
                         <span class="text">Запомнить</span>
                         <button type="submit" class="btn btn-default" value="Вход">ВХОД</button>
 
-                        <a href="/auth/register">Регистрация</a> <-- TODO Оформить ссылку -->
+                        <a href="/auth/register">Регистрация (TODO)</a> <!-- TODO Оформить ссылку -->
 
                     </div>
                 </form>
