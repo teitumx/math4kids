@@ -48,5 +48,7 @@ class UsersSeeder extends Seeder
             'remember_token' => ''
 
         ]);
+
+        User::factory(10)->create();
     }
 }
