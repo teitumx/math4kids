@@ -13,5 +13,14 @@ return [
             'mult' => [2 , 5],
             'div' =>  [2 , 5]
         ]
+    ],
+
+    'types' => ['summ', 'mult', 'div', 'diff'],
+
+    'scoresOfTypes' => [
+        'summ' => 1,
+        'diff' => 1.5,
+        'mult' => 3,
+        'div' => 4
     ]
 ];
