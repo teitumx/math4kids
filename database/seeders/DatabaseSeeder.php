@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(QuestionsSeeder::class);
         $this->call(AllTasksSeeder::class);
-//        AllTasks::factory(100)->create(); // Пока не работает
+        AllTasks::factory(100)->create();
 
     }
 }

@@ -25,7 +25,8 @@ class AllTasksFactory extends Factory
      */
     public function definition()
     {
-        $count = array_rand([20, 40], 1);
+        $arrayCounts = [20,40];
+        $count = $arrayCounts[rand(0,1)];
         $time = $count * 5 + rand(-20, 20);
         $dataStat = [
             'total_mistakes' => rand(0,4),
@@ -34,15 +35,18 @@ class AllTasksFactory extends Factory
             'total_time' => $time,
         ];
         $type = Config::get('constants.types');
+        $type = $type[rand(0,3)];
+        $statistic = new Statistics();
+        $points = $statistic->computeRatingPoints($dataStat, $type);
 
         return [
             'user_id' => rand(1,10),
             'difficulty_type_id' => rand(1,2),
-            `type` => $type,
+            'type' => $type,
             'count_examples' => $count,
             'mistakes' => $dataStat['total_mistakes'],
-            `time` => $time,
-            'points' => Statistics::computeRaitingPoints($dataStat, $type)
+            'time' => $time,
+            'points' => $points
         ];
     }
 }
