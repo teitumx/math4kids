@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Integer;
 
 class Statistics extends Model
 {
@@ -49,15 +50,16 @@ class Statistics extends Model
         return $rating;
     }
 
-    public function computeRaitingPoints($dataStat, $type) :object {
+    public function computeRatingPoints($dataStat, $type) {
         //Формула подсчёта очков рейтинга
+        $score = $this->scoresOfTypes[$type];
         $points = 100 * $dataStat['total_mistakes'];
         $points = $points/(2*20*$dataStat['count_easy']+4*40*$dataStat['count_hard']);
         $points = 1- $points;
-        $points = $points/ 0.00001 / $dataStat['total_time'];
+        $points = $points/ 0.01 / $dataStat['total_time'];
         $points = $points * (2*$dataStat['count_easy']+4*$dataStat['count_hard']);
-        $points = $points * $this->scoresOfTypes[$type];
-        return $points;
+        $points = $points * $score;
+        return (int) $points;
     }
 
 }
