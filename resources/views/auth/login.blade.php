@@ -43,26 +43,31 @@
     </div>
 </div>
 
-
-
-</body>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
     const form = document.querySelector('form')
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var form_data = $(event.target).serialize();
         $.ajax({
             type: "POST",
             url: "/auth/login",
             data: form_data,
-            success: function() {
-                alert("Вы успешно авторизовались!");
+            success: function(isSuccess) {
+                if (isSuccess) {
+                    alert("Вы успешно вошли!")
+                    console.log(data)
+                } else {
+                    alert("Не удалось войти!")
+                }
+            },
+            fail: function() {
+                alert("Не удалось войти!")
             }
         });
     })

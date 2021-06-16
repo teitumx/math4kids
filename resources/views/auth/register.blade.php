@@ -46,7 +46,7 @@
                             <i class="fa fa-lock"></i>
                         </div>
                         <div class="form-group help">
-                            <input type="password" class="form-control" name="password" placeholder="Повторите пароль">
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль">
                             <i class="fa fa-lock"></i>
                         </div>
                         <div class="form-group">
@@ -69,24 +69,49 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('js/app.js') }}"></script>
-<script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script defer>
     const form = document.querySelector('form')
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    function getCookie(name) {
+        if (!document.cookie) {
+            return null;
         }
-    });
+
+        const xsrfCookies = document.cookie.split(';')
+            .map(c => c.trim())
+            .filter(c => c.startsWith(name + '='));
+
+        if (xsrfCookies.length === 0) {
+            return null;
+        }
+        return decodeURIComponent(xsrfCookies[0].split('=')[1]);
+    }
+
+
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         var form_data = $(event.target).serialize(); // Собираем все данные из формы
+        // const csrfToken = getCookie('XSRF-TOKEN');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             type: "POST", // Метод отправки
             url: "/auth/register", // Путь до php файла отправителя
             data: form_data,
-            success: function() {
+            success: function(isSuccess) {
                 // Код в этом блоке выполняется при успешной отправке сообщения
-                alert("Вы успешно зарегистрировались!");
+                if (isSuccess) {
+                    alert("Вы успешно зарегистрировались!")
+                    console.log(data)
+                } else {
+                    alert("Не удалось зарегистрировать пользователя!")
+                }
+            },
+            fail: function() {
+                alert("Не удалось зарегистрировать пользователя!")
             }
         });
     })
