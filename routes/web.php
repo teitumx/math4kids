@@ -27,20 +27,24 @@ Route::get('/', function () {
 //    return view('index');
 //});
 
-    Route::get('/index', [IndexController::class, 'index']);
-    Route::get('/index/rating', [RatingController::class, 'getRatingUsersTop'])->name('rating');
+Route::get('/index', [IndexController::class, 'index']);
+Route::get('/index/rating', [RatingController::class, 'getRatingUsersTop'])->name('rating');
 
 
-Route::namespace('Question')->group(function() {
+Route::namespace('Question')->group(function () {
     Route::get('/education', [QuestionController::class, 'index']);
     Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
 });
 
-Route::namespace('Auth')->group(function() {
+Route::namespace('Auth')->group(function () {
     Route::get('/auth/login', [AuthController::class, 'viewLogin']);
     Route::get('/auth/register', [AuthController::class, 'viewRegister']);
     Route::post('/auth/login', [AuthController::class, 'login']);
     Route::post('/auth/register', [AuthController::class, 'register']);
+});
+
+Route::get('/profile/index', function () {
+    return view('account/index');
 });
 
 
