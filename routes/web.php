@@ -42,6 +42,7 @@ Route::namespace('Question')
     ->group(function () {
         Route::get('/education', [QuestionController::class, 'index']);
         Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
+        Route::post('/setAnswer', [QuestionController::class, 'setAnswer']);
     });
 
 Route::namespace('Auth')->group(function () {

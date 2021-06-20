@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Integer;
 
+/**
+ * App\Models\Statistics
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Statistics newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Statistics newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Statistics query()
+ * @mixin \Eloquent
+ */
 class Statistics extends Model
 {
     use HasFactory;

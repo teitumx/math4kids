@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\DB;
  * @method static \Illuminate\Database\Eloquent\Builder|Question whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Question whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $type
+ * @method static \Illuminate\Database\Eloquent\Builder|Question whereType($value)
  */
 class Question extends Model
 {
@@ -42,8 +44,8 @@ class Question extends Model
 
     public function getRandomQuestions(int $count, int $difficultyTypeId, string $type): array
     {
-        return DB::table('questions')
-            ->select('question_id', 'text', 'answer')
+        return self::query()
+            ->select(['question_id', 'text', 'answer'])
             ->where('type', '=', $type)
             ->where('difficulty_type_id', '=', $difficultyTypeId)
             ->inRandomOrder()

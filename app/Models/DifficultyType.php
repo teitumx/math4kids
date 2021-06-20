@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|DifficultyType whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DifficultyType whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $count_examples
+ * @method static \Illuminate\Database\Eloquent\Builder|DifficultyType whereCountExamples($value)
  */
 class DifficultyType extends Model
 {
