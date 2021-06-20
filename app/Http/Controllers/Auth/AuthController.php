@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -24,20 +25,18 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $result = false;
         if(\Auth::attempt([
             'login' => $request->post('login'),
             'password' => $request->post('password'),
         ])) {
             $request->session()->regenerate();
-            $result = true;
+            return \Auth::user();
         }
-        return $result;
+        return false;
     }
 
     public function register(RegisterRequest $request, User $user)
     {
-        $result = false;
         try {
             $user->fill([
                 'first_name' => $request->post('first_name'),
@@ -49,33 +48,29 @@ class AuthController extends Controller
 
             $user->save();
             \Auth::login($user);
-            $result = true;
+            return \Auth::user();
+
         } catch (\Exception $exp) {
         }
 
-        return $result;
+        return false;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function getUser()
     {
-        //
+        if(!Auth::check()) {
+            return false;
+        }
+
+        return Auth::user();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function logout()
     {
-        //
+        Auth::logout();
+        return redirect()->route('login');
     }
 
     /**

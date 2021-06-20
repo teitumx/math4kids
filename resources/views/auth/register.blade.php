@@ -101,11 +101,11 @@
             type: "POST", // Метод отправки
             url: "/auth/register", // Путь до php файла отправителя
             data: form_data,
-            success: function(isSuccess) {
+            success: function(user) {
                 // Код в этом блоке выполняется при успешной отправке сообщения
-                if (isSuccess) {
+                if (user) {
                     alert("Вы успешно зарегистрировались!")
-                    console.log(data)
+                    console.log(user)
                 } else {
                     alert("Не удалось зарегистрировать пользователя!")
                 }
