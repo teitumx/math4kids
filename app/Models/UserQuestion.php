@@ -75,6 +75,7 @@ class UserQuestion extends Model
                 'number' => $number
             ];
             $arrayQuestions[$key]['number'] = $number;
+            $arrayQuestions[$key]['user_answer'] = '';
         }
         self::insert($arrayUserQuestions);
         return $arrayQuestions;
