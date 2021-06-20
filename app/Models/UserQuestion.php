@@ -66,15 +66,15 @@ class UserQuestion extends Model
     public function create(array $arrayQuestions, User $user): array
     {
         $arrayUserQuestions = [];
-        $number = self::query()->count() + 1;
+        $number = self::query()->max('number') + 1;
         foreach ($arrayQuestions as $key => $question) {
             $arrayUserQuestions[] = [
                 'user_id' => $user->user_id,
-                'question_id' => $question->question_id,
+                'question_id' => $question['question_id'],
                 'user_answer' => '',
                 'number' => $number
             ];
-            $arrayQuestions[$key]->number = $number;
+            $arrayQuestions[$key]['number'] = $number;
         }
         self::insert($arrayUserQuestions);
         return $arrayQuestions;
