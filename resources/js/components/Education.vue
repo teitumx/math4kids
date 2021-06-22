@@ -18,17 +18,14 @@
                 class="example-input"
                 :class="{ 'border-success': right, 'border-danger': wrong }"
                 v-model="userAnswer"
-                v-on:keyup.enter="check()"
+                v-on:keyup.enter="getRandomExample()"
                 ref="answerInput"
               />
               <div class="">
-                <button @click="check()" class="btn">Проверить</button
-                ><button
+                <button @click="check()" class="btn">Проверить</button>
+                  <button
                   class="btn"
-                  @click="
-                    getRandomExample();
-                    ++counter;
-                  "
+                  @click="getRandomExample();"
                 >
                   Cледующий пример
                 </button>
@@ -36,7 +33,7 @@
             </div>
 
             <!--            Когда решены все 40 примеров-->
-            <div class="examples-area" v-if="counter == exampleCounter">
+            <div class="examples-area" v-if="examplesView === false">
               <h1>Отлично!</h1>
               <p class="right-answer"></p>
               <p class="answers">
@@ -54,7 +51,7 @@
                 }}</span>
               </p>
               <!--              Показать фейерверк и ачивку если решены все 40 примеров-->
-              <div v-if="rightCounter === 2">
+              <div v-if="exampleCounter - rightCounter < 2">
                 <h1>
                   Круто! {{ exampleCounter }} правильных примеров! Получай приз!
                 </h1>
@@ -82,7 +79,7 @@ export default {
     return {
       examples: [], //примеры из базы
       randomExample: [], //рандомный пример из массива examples
-      counter: 1, // счётчик попыток
+      counter: 0, // счётчик попыток
       userAnswer: "", // ответ пользователя
       wrong: false, // если ответ не правильный, то рамка красная
       right: false, // если ответ правильный, то рамка зеленая
@@ -106,24 +103,26 @@ export default {
     update: function () {
       axios.get("questions").then((response) => {
         this.examples = response.data;
-        this.getRandomExample();
-        console.log(this.examples.length);
         this.exampleCounter = this.examples.length;
+        this.getRandomExample();
       });
     },
 
     //получить случайный пример
     getRandomExample() {
-      if (this.counter === this.examples.length - 1) {
+        this.check();
+      if (this.counter === this.exampleCounter) {
         this.examplesView = false;
+      } else {
+          let randomItem =  Math.floor(Math.random() * this.examples.length);
+          this.randomExample = this.examples[randomItem];
+          console.log(this.examples[randomItem]['answer']);//подсказка для презентации в консоли
+          this.examples.splice(randomItem, 1);
+          this.counter++;
       }
-      this.randomExample = this.examples[
-        Math.floor(Math.random() * this.examples.length)
-      ];
       this.userAnswer = "";
       this.right = false;
       this.wrong = false;
-
       this.focusInput('answerInput');
     },
 
@@ -132,10 +131,12 @@ export default {
       if (this.userAnswer === this.randomExample.answer) {
         this.right = true;
         this.rightCounter++;
+      } else if (this.userAnswer === '') {
+            this.wrong = true;
       } else {
-        this.wrong = true;
-        this.wrongCounter++;
-      }
+            this.wrong = true;
+            this.wrongCounter++;
+        }
     },
 
     // перезагрузка страницы с примерами после вывода результатов
