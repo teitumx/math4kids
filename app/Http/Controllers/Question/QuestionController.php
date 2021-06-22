@@ -24,7 +24,7 @@ class QuestionController extends Controller
         if ($userQuestion->hasQuestions(\Auth::user())) {
             $arrayQuestions = $userQuestion->getQuestions(\Auth::user(), 1);
         } else {
-            $arrayQuestions = $question->getRandomQuestions(40, 1, 'summ');
+            $arrayQuestions = $question->getRandomQuestions(20, 2, 'summ');
 
             $arrayQuestions = $userQuestion->create($arrayQuestions, \Auth::user());
         }
