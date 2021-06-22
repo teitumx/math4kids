@@ -60,7 +60,7 @@
             data: form_data,
             success: function(isSuccess) {
                 if (isSuccess) {
-                    alert("Вы успешно вошли!")
+                    window.location.href = "{{ asset('profile/index') }}";
                     console.log(data)
                 } else {
                     alert("Не удалось войти!")
